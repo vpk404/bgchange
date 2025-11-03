@@ -1,4 +1,4 @@
-# GPU Batch Background Replacer (CPU Default)
+# âš¡ GPU Batch Background Replacer (CPU Default)
 
 This project helps you remove image backgrounds in bulk and replace them with a new background image. Itâ€™s simple, fast, and works by default on CPU. You can enable GPU support for faster results if your system supports it.
 
@@ -17,7 +17,7 @@ This project helps you remove image backgrounds in bulk and replace them with a 
 ---
 
 ## ðŸ§© Requirements
-- Python 3.8 or higher
+- Python 3.8 or higher  
 - Dependencies (already in `requirements.txt`):
   ```
   pillow
@@ -30,6 +30,7 @@ This project helps you remove image backgrounds in bulk and replace them with a 
 ---
 
 ## âš™ï¸ Installation Steps
+
 1. **Clone this repository:**
    ```bash
    git clone https://github.com/vpk404/e-com-automation.git
@@ -53,7 +54,9 @@ This project helps you remove image backgrounds in bulk and replace them with a 
 ---
 
 ## âš¡ Want to Use GPU?
+
 If you have a GPU and want to speed up background removal:
+
 1. Open `requirements.txt` and replace this line:
    ```
    onnxruntime
@@ -62,31 +65,34 @@ If you have a GPU and want to speed up background removal:
    ```
    onnxruntime-gpu
    ```
+
 2. Reinstall dependencies:
    ```bash
    pip install -r requirements.txt
    ```
+
 3. Make sure your system has:
-   - A compatible NVIDIA GPU
-   - CUDA Toolkit and cuDNN installed
-   - Updated GPU drivers
+   - A compatible NVIDIA GPU  
+   - CUDA Toolkit and cuDNN installed  
+   - Updated GPU drivers  
 
 If GPU is detected, `rembg` will automatically use it.
 
 ---
 
 ## ðŸš€ How to Use
-1. Place your images and the `bg.py` script in the same folder.
+
+1. Place your images and the `bg.py` script in the same folder.  
 2. Run the script:
    ```bash
    python bg.py
    ```
-3. A file picker will appear â€“ select the background image you want.
-4. The script will:
-   - Scan your folder for supported images.
-   - Remove their backgrounds.
-   - Add your selected background.
-   - Save all results inside a new `output` folder.
+3. A file picker will appear â€“ select the background image you want.  
+4. The script will:  
+   - Scan your folder for supported images  
+   - Remove their backgrounds  
+   - Add your selected background  
+   - Save all results inside a new `output` folder  
 
 ---
 
@@ -106,17 +112,17 @@ e-com-automation/
 ---
 
 ## ðŸ§  How It Works (Simple)
-1. The script finds all image files in the same folder.
-2. It removes the background using `rembg` (CPU by default, GPU if enabled).
-3. The chosen background image is resized to match each photo.
+1. The script finds all image files in the same folder.  
+2. It removes the background using `rembg` (CPU by default, GPU if enabled).  
+3. The chosen background image is resized to match each photo.  
 4. The final combined image is saved in the `output/` folder.
 
 ---
 
 ## â— Common Issues
-- **No images found:** Make sure your images are in the same folder as `bg.py`.
-- **`tkinter` missing:** On Linux, install it using `sudo apt install python3-tk`.
-- **ONNX errors:** If GPU drivers are missing, switch back to CPU by using `onnxruntime`.
+- **No images found:** Make sure your images are in the same folder as `bg.py`.  
+- **`tkinter` missing:** On Linux, install it using `sudo apt install python3-tk`.  
+- **ONNX errors:** If GPU drivers are missing, switch back to CPU by using `onnxruntime`.  
 - **Permission denied:** Run the script from a folder you have write access to.
 
 ---
