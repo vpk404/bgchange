@@ -132,9 +132,5 @@ Pull requests and suggestions are welcome! You can fork the repo, make changes, 
 
 ---
 
-## 📄 License
-This project is under the **MIT License** – you’re free to use, modify, and share it.
 
----
-
-Made with ❤️ by [VPK404](https://github.com/vpk404)
+Made ❤️ by [VPK404](https://github.com/vpk404)
