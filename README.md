@@ -1,134 +1,134 @@
-# GPU-Optimized Batch Background Replacer
+# GPU Batch Background Replacer (CPU Default)
 
-A small, high-performance Python script that removes backgrounds from images in a folder and composites them onto a selected background image. Outputs PNG files and avoids overwriting existing files by adding suffixes when needed.
+This project helps you remove image backgrounds in bulk and replace them with a new background image. Itâ€™s simple, fast, and works by default on CPU. You can enable GPU support for faster results if your system supports it.
 
----
-
-## Features
-- Supports JPG, JPEG, PNG, BMP, GIF (static only), TIFF
-- GPU-accelerated inference if `onnxruntime-gpu` is installed
-- Skips animated GIFs automatically
-- Case-insensitive file detection
-- Prevents overwrites by appending `_1`, `_2`, etc. to output filenames
-- Logs saved filenames and counts unique outputs
+**GitHub Repo:** [https://github.com/vpk404/e-com-automation.git](https://github.com/vpk404/e-com-automation.git)
 
 ---
 
-## Table of Contents
-1. [Requirements](#requirements)
-2. [Installation](#installation)
-3. [Usage](#usage)
-4. [How it works (brief)](#how-it-works-brief)
-5. [Example output structure](#example-output-structure)
-6. [Troubleshooting](#troubleshooting)
-7. [Contributing](#contributing)
-8. [License](#license)
+## âœ¨ Features
+- Works with JPG, PNG, BMP, GIF (not animated), and TIFF images.
+- Runs on CPU by default (no GPU required).
+- Can use GPU with ONNX for faster performance.
+- Avoids overwriting files by renaming them (`_1`, `_2`, etc.).
+- Simple folder-based workflow.
+- Logs and counts all processed images.
 
 ---
 
-## Requirements
-- Python 3.8+
-- The script dependencies listed in `requirements.txt`:
-
-```
-pillow
-rembg
-onnxruntime-gpu
-tqdm
-```
-
-> Note: `tkinter` is used for the file picker and is usually included with the system Python. On some Linux distributions you may need to install `python3-tk` separately.
+## ðŸ§© Requirements
+- Python 3.8 or higher
+- Dependencies (already in `requirements.txt`):
+  ```
+  pillow
+  rembg
+  onnxruntime
+  tqdm
+  ```
+- `tkinter` (used for selecting background image â€“ usually built-in with Python)
 
 ---
 
-## Installation
-1. Clone the repository:
+## âš™ï¸ Installation Steps
+1. **Clone this repository:**
+   ```bash
+   git clone https://github.com/vpk404/e-com-automation.git
+   cd e-com-automation
+   ```
 
-```bash
-git clone https://github.com/<your-username>/<your-repo>.git
-cd <your-repo>
-```
+2. **(Optional) Create a virtual environment:**
+   ```bash
+   python -m venv venv
+   # Windows
+   venv\Scripts\activate
+   # macOS / Linux
+   source venv/bin/activate
+   ```
 
-2. (Optional) Create and activate a virtual environment:
-
-```bash
-python -m venv venv
-# On Windows
-venv\Scripts\activate
-# On macOS / Linux
-source venv/bin/activate
-```
-
-3. Install dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-If you do not have a GPU or prefer CPU-only, replace `onnxruntime-gpu` with `onnxruntime` in `requirements.txt`.
+3. **Install all required libraries (CPU version):**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 ---
 
-## Usage
-1. Put the `bg.py` script into the folder containing the images you want to process (or run it from that folder).
+## âš¡ Want to Use GPU?
+If you have a GPU and want to speed up background removal:
+1. Open `requirements.txt` and replace this line:
+   ```
+   onnxruntime
+   ```
+   with:
+   ```
+   onnxruntime-gpu
+   ```
+2. Reinstall dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Make sure your system has:
+   - A compatible NVIDIA GPU
+   - CUDA Toolkit and cuDNN installed
+   - Updated GPU drivers
+
+If GPU is detected, `rembg` will automatically use it.
+
+---
+
+## ðŸš€ How to Use
+1. Place your images and the `bg.py` script in the same folder.
 2. Run the script:
-
-```bash
-python bg.py
-```
-
-3. A file picker window will open. Choose the background image you want to composite onto all found images.
-4. The script will scan the current folder for supported images and process them one by one. Outputs are saved as PNG files in an `output/` folder located next to the script.
-
-**Notes:**
-- Animated GIFs are detected and skipped.
-- If an output filename already exists, the script will append `_1`, `_2`, etc., to avoid overwriting.
+   ```bash
+   python bg.py
+   ```
+3. A file picker will appear â€“ select the background image you want.
+4. The script will:
+   - Scan your folder for supported images.
+   - Remove their backgrounds.
+   - Add your selected background.
+   - Save all results inside a new `output` folder.
 
 ---
 
-## How it works (brief)
-1. The script finds images in the script's directory using case-insensitive extension matching.
-2. Each static image is opened and passed through `rembg.remove()` which removes the background (uses ONNX runtime, GPU if available).
-3. The selected background image is resized to match the source image size.
-4. The background and foreground (with transparent alpha) are alpha-composited and saved as PNG.
-
----
-
-## Example output structure
+## ðŸ“‚ Example Folder Structure
 ```
-your-repo/
+e-com-automation/
 â”œâ”€ bg.py
 â”œâ”€ requirements.txt
 â”œâ”€ README.md
-â”œâ”€ sample.jpg
-â”œâ”€ sample2.png
+â”œâ”€ photo1.jpg
+â”œâ”€ photo2.png
 â””â”€ output/
-   â”œâ”€ sample.png
-   â””â”€ sample2.png
+   â”œâ”€ photo1.png
+   â””â”€ photo2.png
 ```
 
 ---
 
-## Troubleshooting
-- **No images found**: Make sure the script is run from the folder that contains the images or move the script into the images folder.
-- **`tkinter` missing on Linux**: Install with your package manager, e.g. `sudo apt install python3-tk`.
-- **ONNX runtime errors**: If you installed `onnxruntime-gpu` but lack a compatible GPU or drivers, either install `onnxruntime` (CPU) or fix GPU drivers/CUDA toolkit.
-- **Permission errors saving files**: Ensure you have write permissions in the script folder.
+## ðŸ§  How It Works (Simple)
+1. The script finds all image files in the same folder.
+2. It removes the background using `rembg` (CPU by default, GPU if enabled).
+3. The chosen background image is resized to match each photo.
+4. The final combined image is saved in the `output/` folder.
 
 ---
 
-## Contributing
-Contributions welcome! Open an issue or a PR with bugfixes, enhancements, or improvements to documentation.
+## â— Common Issues
+- **No images found:** Make sure your images are in the same folder as `bg.py`.
+- **`tkinter` missing:** On Linux, install it using `sudo apt install python3-tk`.
+- **ONNX errors:** If GPU drivers are missing, switch back to CPU by using `onnxruntime`.
+- **Permission denied:** Run the script from a folder you have write access to.
 
 ---
 
-## License
-Specify a license (e.g., MIT) or keep it as you prefer. Example:
-
-```
-MIT License
-```
+## ðŸ¤ Contributing
+Pull requests and suggestions are welcome! You can fork the repo, make changes, and submit a PR.
 
 ---
 
-*Made with â¤ï¸ â€” feel free to ask for badges, a short demo GIF, or version-pinned requirements.*
+## ðŸ“„ License
+This project is under the **MIT License** â€“ youâ€™re free to use, modify, and share it.
+
+---
+
+Made with â¤ï¸ by [VPK404](https://github.com/vpk404)
