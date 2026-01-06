@@ -22,7 +22,8 @@
 
 ## 📸 Screenshots
 
-*(Add screenshots here if you have them)*
+<img width="1004" height="696" alt="Screenshot 2026-01-06 175352" src="https://github.com/user-attachments/assets/88903e46-b8a9-462e-8e48-0e91db7e3397" />
+
 
 ---
 
