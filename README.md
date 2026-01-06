@@ -1,6 +1,6 @@
-# 🎨 VPK Background Remover (GUI)
+# 🎨 VPK Background Changer (GUI)
 
-> **A modern, stunning, and batch-capable background removal tool powered by AI.**  
+> **A modern, stunning, and batch-capable background Changer tool powered by AI.**  
 > *Drop your folders, pick a background, and let the magic happen.*
 
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
@@ -11,7 +11,7 @@
 
 ## ✨ Features
 
-- **🚀 AI-Powered Removal**: Uses `rembg` (U^2-Net) for precise background cutting.
+- **🚀 AI-Powered Changer**: Uses `rembg` (U^2-Net) for precise background cutting.
 - **🖥️ Modern GUI**: Built with `CustomTkinter` for a clean, dark/light mode compatible interface.
 - **📂 Batch Processing**: Process thousands of images from multiple folders at once.
 - **🖐️ Drag & Drop**: Simply drag folders or background images directly into the app.
