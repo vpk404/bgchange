@@ -1,8 +1,9 @@
-# Base dependencies
+# Core processing
 pillow
 rembg
 onnxruntime-gpu
 tqdm
 
-# Optional: GUI (already built-in in Python, but listing for clarity)
-tk
+# GUI Dependencies
+customtkinter
+tkinterdnd2

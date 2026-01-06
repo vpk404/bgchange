@@ -1,136 +1,98 @@
-# ⚡ Batch Background Replacer (CPU Default)
+# 🎨 VPK Background Remover (GUI)
 
-This project helps you remove image backgrounds in bulk and replace them with a new background image. It’s simple, fast, and works by default on CPU. You can enable GPU support for faster results if your system supports it.
+> **A modern, stunning, and batch-capable background removal tool powered by AI.**  
+> *Drop your folders, pick a background, and let the magic happen.*
 
-**GitHub Repo:** [https://github.com/vpk404/bgchange.git](https://github.com/vpk404/bgchange.git)
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey?style=for-the-badge)](https://github.com/vpk404/bgchange)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
 ---
 
 ## ✨ Features
-- Works with JPG, PNG, BMP, GIF (not animated), and TIFF images.
-- Runs on CPU by default (no GPU required).
-- Can use GPU with ONNX for faster performance.
-- Avoids overwriting files by renaming them (`_1`, `_2`, etc.).
-- Simple folder-based workflow.
-- Logs and counts all processed images.
+
+- **🚀 AI-Powered Removal**: Uses `rembg` (U^2-Net) for precise background cutting.
+- **🖥️ Modern GUI**: Built with `CustomTkinter` for a clean, dark/light mode compatible interface.
+- **📂 Batch Processing**: Process thousands of images from multiple folders at once.
+- **🖐️ Drag & Drop**: Simply drag folders or background images directly into the app.
+- **🔄 Smart Resizing**: Automatically resizes the background to fit your subject.
+- **⚡ GPU Support**: Supports NVIDIA GPU acceleration (via ONNX) for blazing speeds.
 
 ---
 
-## 🧩 Requirements
-- Python 3.8 or higher  
-- Dependencies (already in `requirements.txt`):
-  ```
-  pillow
-  rembg
-  onnxruntime
-  tqdm
-  ```
-- `tkinter` (used for selecting background image – usually built-in with Python)
+## 📸 Screenshots
+
+*(Add screenshots here if you have them)*
 
 ---
 
-## ⚙️ Installation Steps
+## 🛠️ Installation
 
-1. **Clone this repository:**
-   ```bash
-   git clone https://github.com/vpk404/bgchange.git
-   cd bgchange
-   ```
+### 1. Clone the Repository
+```bash
+git clone https://github.com/vpk404/bgchange.git
+cd bgchange
+```
 
-2. **(Optional) Create a virtual environment:**
-   ```bash
-   python -m venv venv
-   # Windows
-   venv\Scripts\activate
-   # macOS / Linux
-   source venv/bin/activate
-   ```
+### 2. Set Up Environment
+It's recommended to use a virtual environment:
+```bash
+python -m venv venv
+# Windows:
+venv\Scripts\activate
+# Mac/Linux:
+source venv/bin/activate
+```
 
-3. **Install all required libraries (CPU version):**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
----
-
-## ⚡ Want to Use GPU?
-
-If you have a GPU and want to speed up background removal:
-
-1. Open `requirements.txt` and replace this line:
-   ```
-   onnxruntime
-   ```
-   with:
-   ```
-   onnxruntime-gpu
-   ```
-
-2. Reinstall dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. Make sure your system has:
-   - A compatible NVIDIA GPU  
-   - CUDA Toolkit and cuDNN installed  
-   - Updated GPU drivers  
-
-If GPU is detected, `rembg` will automatically use it.
+### 3. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+> **Note for GPU Users:** If you have an NVIDIA GPU, ensure you have installed the CUDA toolkit compatible with `onnxruntime-gpu`.
 
 ---
 
 ## 🚀 How to Use
 
-1. Place your images and the `bg.py` script in the same folder.  
-2. Run the script:
+1. **Run the App**:
    ```bash
    python bg.py
    ```
-3. A file picker will appear – select the background image you want.  
-4. The script will:  
-   - Scan your folder for supported images  
-   - Remove their backgrounds  
-   - Add your selected background  
-   - Save all results inside a new `output` folder  
+2. **Add Input Folders**:
+   - Click **`+ Add`** to select folders containing your images.
+   - Or **Drag & Drop** folders directly into the "Input Folders" list.
+3. **Select Background**:
+   - Click **`Browse`** to choose the new background image.
+   - Or **Drag & Drop** an image file into the app.
+4. **Start Magic**:
+   - Click **`START PROCESSING`**.
+   - Watch the progress bar as your images are transformed!
+5. **Find Results**:
+   - All processed images are saved in a new folder named `OUTPUT` on your Desktop (or current directory).
 
 ---
 
-## 📂 Example Folder Structure
-```
-bgchange/
-├─ bg.py
-├─ requirements.txt
-├─ README.md
-├─ photo1.jpg
-├─ photo2.png
-└─ output/
-   ├─ photo1.png
-   └─ photo2.png
-```
+## 🧩 Requirements
 
----
-
-## 🧠 How It Works (Simple)
-1. The script finds all image files in the same folder.  
-2. It removes the background using `rembg` (CPU by default, GPU if enabled).  
-3. The chosen background image is resized to match each photo.  
-4. The final combined image is saved in the `output/` folder.
-
----
-
-## ❗ Common Issues
-- **No images found:** Make sure your images are in the same folder as `bg.py`.  
-- **`tkinter` missing:** On Linux, install it using `sudo apt install python3-tk`.  
-- **ONNX errors:** If GPU drivers are missing, switch back to CPU by using `onnxruntime`.  
-- **Permission denied:** Run the script from a folder you have write access to.
+- **Python 3.8+**
+- **Libraries**:
+  - `customtkinter` (UI)
+  - `tkinterdnd2` (Drag & Drop)
+  - `rembg` (AI Engine)
+  - `pillow` (Image Processing)
+  - `onnxruntime` or `onnxruntime-gpu`
 
 ---
 
 ## 🤝 Contributing
-Pull requests and suggestions are welcome! You can fork the repo, make changes, and submit a PR.
+
+Got an idea? Found a bug?  
+Feel free to [open an issue](https://github.com/vpk404/bgchange/issues) or submit a pull request!
 
 ---
 
+<div align="center">
 
-Made ❤️ by [VPK404](https://github.com/vpk404)
+**Made with ❤️ by [VPK404](https://github.com/vpk404)**
+
+</div>
